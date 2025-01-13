@@ -1,4 +1,5 @@
 import "./globals.css"
+import Asset from "@/components/Asset/Asset";
 
 export default function Home() {
   return (
@@ -11,16 +12,19 @@ export default function Home() {
         <section className="section-container">
           <h3>Pendente</h3>
           <div className="items">
+          <Asset />            
           </div>
         </section>
         <section className="section-container">
           <h3>Agendado</h3>
           <div className="items">
+          <Asset />
           </div>
         </section>
         <section className="section-container">
           <h3>Coletados</h3>
           <div className="items">
+          <Asset />
           </div>
         </section>
       </section>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import ModalContextProvider from "@/context/AppContext";
 
 export const metadata: Metadata = {
   title: "Faça Minha Coleta App",
@@ -14,7 +15,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {children}
+        <ModalContextProvider>
+          {children}
+        </ModalContextProvider>
       </body>
     </html>
   );
