@@ -10,7 +10,7 @@ type ModalPropsType = {
     children: ReactNode;
 }
 
-const ModalContext = createContext<ModalType | undefined>(undefined);
+export const ModalContext = createContext<ModalType | undefined>(undefined);
 
 const ModalContextProvider: React.FC<ModalPropsType> = ({children}) => {
     const [isEnable, setIsEnable] = useState(false);

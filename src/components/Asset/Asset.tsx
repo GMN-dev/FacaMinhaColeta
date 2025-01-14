@@ -3,6 +3,9 @@ import styles from "./Asset.module.css"
 import notebook from "../../../public/notebook.png"
 
 const Asset = () => {
+    
+    
+    
     return(
         <div className={styles.assetContainer}>
             <div className={styles.imgContainer}>  
