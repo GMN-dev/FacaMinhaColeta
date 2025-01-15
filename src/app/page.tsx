@@ -13,9 +13,11 @@ export default function Home() {
   function showModal(): void{
     setIsEnable(true);
   }
+  
 
   return (
     <main>
+      <div>{isEnable ? "true":"false"}</div>
       <Modal></Modal>
       <div className="container-top">
         <h1 className="title-header">Relatório de coleta de equipamentos - Brasília.</h1>
