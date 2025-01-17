@@ -8,12 +8,12 @@ import { useContext } from "react";
 
 
 export default function Home() {
-  const {setIsEnable}: any = useContext(ModalContext);
+  const {isEnable, setIsEnable}: any = useContext(ModalContext);
   
   function enableModal(): void{
     setIsEnable(true);
   }
-
+  
   return (
     <main>
       <Modal></Modal>
