@@ -1,12 +1,13 @@
 "use client"
 
+import { FormInterface } from "@/utils/interfaces/FormInterface";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 const AssetForm = () => {
     
-    const {register, handleSubmit, formState: { errors }} = useForm<AssetInterface>()   
+    const {register, handleSubmit, formState: { errors }} = useForm<FormInterface>()   
 
-    const onSubmit = (data: AssetInterface) =>{          
+    const onSubmit = (data: FormInterface) =>{          
         console.log(data.assetType);
     }   
 
@@ -22,6 +23,10 @@ const AssetForm = () => {
                 <option value="NOTEBOOK">Notebook</option>
                 <option value="MONITOR">Monitor</option>
             </select>
+        </div>
+        <div>
+            <label htmlFor="email"></label>
+            <input {...register('email')} type="email" name="" id="" />
         </div>
         <button type="submit">Concluir</button>
      </form>   
