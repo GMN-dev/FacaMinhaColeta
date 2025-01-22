@@ -15,11 +15,11 @@ const AssetForm = () => {
     return(
      <form className={styles.form} action="POST" onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.containerTop}>
-            <div className="top">
+            <div className={styles.top}>
                 <label htmlFor="heritage">Patrimônio:</label>
-                <input className={styles.campo} id="heritage" placeholder="C0XXXXX" {...register('heritage')} type="text" />
+                <input className={styles.campo} maxLength={7} id="heritage" placeholder="C0XXXXX" {...register('heritage')} type="text" />
             </div>
-            <div>
+            <div className={styles.top}>
                 <label htmlFor="assetType">Ativo:</label>
                 <select className={styles.campo} {...register("assetType")} >
                     <option value="NOTEBOOK">Notebook</option>
@@ -27,7 +27,7 @@ const AssetForm = () => {
                 </select>
             </div>
         </div>
-        <div className={styles.top}>
+        <div >
             <label htmlFor="email">Email do colaborador:</label>
             <input className={styles.campo} {...register('email')} type="email" placeholder="usuario@stefanini.com" id={styles.emailInput} />
         </div>
