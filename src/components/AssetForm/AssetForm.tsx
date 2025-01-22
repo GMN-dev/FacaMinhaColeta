@@ -2,6 +2,7 @@
 
 import { FormInterface } from "@/utils/interfaces/FormInterface";
 import { SubmitHandler, useForm } from "react-hook-form";
+import styles from "./AssetForm.module.css";
 
 const AssetForm = () => {
     
@@ -12,23 +13,25 @@ const AssetForm = () => {
     }   
 
     return(
-     <form action="POST" onSubmit={handleSubmit(onSubmit)}>
-        <div>
-            <label htmlFor="heritage">Heritage</label>
-            <input id="heritage" {...register('heritage')} type="text" />
+     <form className={styles.form} action="POST" onSubmit={handleSubmit(onSubmit)}>
+        <div className={styles.containerTop}>
+            <div className="top">
+                <label htmlFor="heritage">Patrimônio:</label>
+                <input className={styles.campo} id="heritage" placeholder="C0XXXXX" {...register('heritage')} type="text" />
+            </div>
+            <div>
+                <label htmlFor="assetType">Ativo:</label>
+                <select className={styles.campo} {...register("assetType")} >
+                    <option value="NOTEBOOK">Notebook</option>
+                    <option value="MONITOR">Monitor</option>
+                </select>
+            </div>
         </div>
-        <div>
-            <label htmlFor="assetType">Tipo de Ativo</label>
-            <select {...register("assetType")} >
-                <option value="NOTEBOOK">Notebook</option>
-                <option value="MONITOR">Monitor</option>
-            </select>
+        <div className={styles.top}>
+            <label htmlFor="email">Email do colaborador:</label>
+            <input className={styles.campo} {...register('email')} type="email" placeholder="usuario@stefanini.com" id={styles.emailInput} />
         </div>
-        <div>
-            <label htmlFor="email"></label>
-            <input {...register('email')} type="email" name="" id="" />
-        </div>
-        <button type="submit">Concluir</button>
+        <button className="bg-blue-600 text-white p-2 rounded-lg hover:brightness-110" type="submit">Acionar Colaborador</button>
      </form>   
     );
 }
