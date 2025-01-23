@@ -9,7 +9,7 @@ const AssetForm = () => {
     const {register, handleSubmit, formState: { errors }} = useForm<FormInterface>()   
 
     const onSubmit = (data: FormInterface) =>{          
-        console.log(data.assetType);
+    
     }   
 
     return(
