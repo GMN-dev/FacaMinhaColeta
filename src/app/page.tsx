@@ -4,12 +4,21 @@ import "./globals.css"
 import Asset from "@/components/Asset/Asset";
 import Modal from "@/components/Modal/Modal";
 import { ModalContext } from "@/context/AppContext";
-import { useContext } from "react";
-
+import getListAssetService from "@/services/assetServices/getListAssetService";
+import { useContext, useEffect, useState } from "react";
 
 export default function Home() {
   const {isEnable, setIsEnable}: any = useContext(ModalContext);
-  
+  const [assets, setAssets] = useState();
+
+  useEffect(() => {
+    getListAssetService().then(response => {setAssets(response)});
+  },[])
+
+  function teste(){
+    console.log(assets);
+  }
+
   function enableModal(): void{
     setIsEnable(true);
   }
@@ -25,7 +34,7 @@ export default function Home() {
         <section className="section-container">
           <h3>Pendente</h3>
           <div className="items">
-          <Asset />            
+            <button onClick={teste}>asd;ljk</button>
           </div>
         </section>
         <section className="section-container">

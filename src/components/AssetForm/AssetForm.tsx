@@ -3,13 +3,14 @@
 import { FormInterface } from "@/utils/interfaces/FormInterface";
 import { SubmitHandler, useForm } from "react-hook-form";
 import styles from "./AssetForm.module.css";
+import getListAssetService from "@/services/assetServices/getListAssetService";
 
 const AssetForm = () => {
     
     const {register, handleSubmit, formState: { errors }} = useForm<FormInterface>()   
 
     const onSubmit = (data: FormInterface) =>{          
-    
+        
     }   
 
     return(
