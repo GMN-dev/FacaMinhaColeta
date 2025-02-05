@@ -5,19 +5,24 @@ import Asset from "@/components/Asset/Asset";
 import Modal from "@/components/Modal/Modal";
 import { ModalContext } from "@/context/AppContext";
 import getListAssetService from "@/services/assetServices/getListAssetService";
+import { Status } from "@/utils/enums/Status";
+import AssetInterface from "@/utils/interfaces/AssetInterface";
 import { useContext, useEffect, useState } from "react";
+
 
 export default function Home() {
   const {isEnable, setIsEnable}: any = useContext(ModalContext);
-  const [assets, setAssets] = useState();
+  const [assets, setAssets] = useState<AssetInterface[]>([]);
 
-  useEffect(() => {
-    getListAssetService().then(response => {setAssets(response)});
-  },[])
-
-  function teste(){
-    console.log(assets);
+  async function fetchData() {
+    const response = await getListAssetService();
+    console.log(response)
+    setAssets(response); 
   }
+
+  useEffect(() => {  
+    fetchData();
+  }, []);
 
   function enableModal(): void{
     setIsEnable(true);
@@ -34,19 +39,29 @@ export default function Home() {
         <section className="section-container">
           <h3>Pendente</h3>
           <div className="items">
-            <button onClick={teste}>asd;ljk</button>
+          {assets
+          .filter(element => element.status == "COLETADO")
+          .map((element)=>
+              <Asset heritage={element.heritage} status={element.status} pickupDate={element.pickupDate}/>
+            )}
           </div>
         </section>
-        <section className="section-container">
+        {/* <section className="section-container">
           <h3>Agendado</h3>
           <div className="items">
-          <Asset />
+            {assets.map((element)=>
+              <Asset heritage={element.heritage} status={element.status} pickupDate={element.pickupDate}/>
+            )}
           </div>
-        </section>
+        </section> */}
         <section className="section-container">
           <h3>Coletados</h3>
           <div className="items">
-          <Asset />
+          {assets
+          .filter(element => element.status === "PENDENTE" || element.status === "AGENDADO")
+          .map((element)=>
+              <Asset heritage={element.heritage} status={element.status} pickupDate={element.pickupDate}/>
+            )}
           </div>
         </section>
       </section>
