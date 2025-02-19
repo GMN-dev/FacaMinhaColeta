@@ -16,12 +16,12 @@ export default function Home() {
 
   async function fetchData() {
     const response = await getListAssetService();
-    console.log(response)
     setAssets(response); 
   }
 
   useEffect(() => {  
     fetchData();
+    console.log(assets)
   }, []);
 
   function enableModal(): void{
@@ -40,27 +40,19 @@ export default function Home() {
           <h3>Pendente</h3>
           <div className="items">
           {assets
-          .filter(element => element.status == "COLETADO")
+          .filter(element => element.status === Status.PENDENTE || element.status === Status.AGENDADO )
           .map((element)=>
-              <Asset heritage={element.heritage} status={element.status} pickupDate={element.pickupDate}/>
+              <Asset heritage={element.heritage} status={element.status} scheduledDate={element.scheduledDate}/>
             )}
           </div>
         </section>
-        {/* <section className="section-container">
-          <h3>Agendado</h3>
-          <div className="items">
-            {assets.map((element)=>
-              <Asset heritage={element.heritage} status={element.status} pickupDate={element.pickupDate}/>
-            )}
-          </div>
-        </section> */}
         <section className="section-container">
           <h3>Coletados</h3>
           <div className="items">
           {assets
-          .filter(element => element.status === "PENDENTE" || element.status === "AGENDADO")
+          .filter(element => element.status === Status.COLETADO)
           .map((element)=>
-              <Asset heritage={element.heritage} status={element.status} pickupDate={element.pickupDate}/>
+              <Asset heritage={element.heritage} status={element.status} scheduledDate={element.scheduledDate}/>
             )}
           </div>
         </section>

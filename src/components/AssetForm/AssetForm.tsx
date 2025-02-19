@@ -10,7 +10,7 @@ const AssetForm = () => {
     const {register, handleSubmit, formState: { errors }} = useForm<FormInterface>()   
 
     const onSubmit = (data: FormInterface) =>{          
-        
+            
     }   
 
     return(
@@ -21,7 +21,7 @@ const AssetForm = () => {
                 <input className={styles.campo} maxLength={7} id="heritage" placeholder="C0XXXXX" {...register('heritage')} type="text" />
             </div>
             <div className={styles.top}>
-                <label htmlFor="assetType">Ativo:</label>
+                <label htmlFor="assetType">Equipamento:</label>
                 <select className={styles.campo} {...register("assetType")} >
                     <option value="NOTEBOOK">Notebook</option>
                     <option value="MONITOR">Monitor</option>

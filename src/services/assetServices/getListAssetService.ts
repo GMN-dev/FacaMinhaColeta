@@ -2,9 +2,9 @@ import api from "../api";
 
 export default async function getListAssetService(){
     try{
-            const response =  await api.get("equipamentos/listagem")
+        const response =  await api.get("equipamentos/list")
         return response.data;
     }catch(error: any){
-        return `Houve um errro: ${error.message}`;
+        return `Houve um erro: ${error.message} \n${error}`;
     }
 }

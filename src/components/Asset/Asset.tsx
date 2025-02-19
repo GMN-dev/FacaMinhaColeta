@@ -4,7 +4,7 @@ import notebook from "../../../public/notebook.png"
 import AssetInterface from "@/utils/interfaces/AssetInterface";
 
 
-const Asset = ({heritage, status, scheduledDate, pickupDate}: AssetInterface) => {
+const Asset = ({heritage, status, scheduledDate}: AssetInterface) => {
     return(
         <div className={styles.assetContainer}>
             <div className={styles.imgContainer}>  
@@ -16,7 +16,7 @@ const Asset = ({heritage, status, scheduledDate, pickupDate}: AssetInterface) =>
                     <span>{status}</span>
                 </div>
                 <div>
-                    <h3>Dias pendentes: pendingDays</h3>
+                    <h3>Dias pendentes: {scheduledDate}</h3>
                 </div>
                 <div className={styles.containerBtn}>
                     <button className={styles.btn} id={styles.check} type="button">Coletar</button>
