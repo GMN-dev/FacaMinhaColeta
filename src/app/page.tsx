@@ -12,17 +12,17 @@ import { useContext, useEffect, useState } from "react";
 
 export default function Home() {
   const {isEnable, setIsEnable}: any = useContext(ModalContext);
-  const [assets, setAssets] = useState<AssetInterface[]>([]);
+  const [assets, setAssets] = useState([]);
 
   async function fetchData() {
     const response = await getListAssetService();
-    setAssets(response); 
+    console.log(response)
+    setAssets(response)
   }
 
   useEffect(() => {  
     fetchData();
-    console.log(assets)
-  }, []);
+  },[]);
 
   function enableModal(): void{
     setIsEnable(true);
