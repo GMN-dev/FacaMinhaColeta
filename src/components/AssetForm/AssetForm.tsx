@@ -28,9 +28,15 @@ const AssetForm = () => {
                 </select>
             </div>
         </div>
-        <div >
-            <label htmlFor="email">Email do colaborador:</label>
-            <input className={styles.campo} {...register('email')} type="email" placeholder="usuario@stefanini.com" id={styles.emailInput} />
+        <div className="flex flex-col gap-4">
+            <div>
+                <label htmlFor="name">Nome do colaborador:</label>
+                <input className={styles.campo} {...register('name')} type="text" placeholder="Marco Stefanini" id={styles.emailInput} />
+            </div>
+            <div>
+                <label htmlFor="email">Email do colaborador:</label>
+                <input className={styles.campo} {...register('email')} type="email" placeholder="usuario@stefanini.com" id={styles.emailInput} />
+            </div>
         </div>
         <button className="bg-blue-600 text-white p-2 rounded-lg hover:brightness-110" type="submit">Acionar Colaborador</button>
      </form>   
