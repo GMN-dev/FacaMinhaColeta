@@ -41,7 +41,7 @@ export default function Home() {
         </section>
         <section className="section-container">
         <h3>Agendados</h3>
-          <ListAssets listAssets={assets} status="PENDENTE"></ListAssets>
+          <ListAssets listAssets={assets} status="AGENDADO"></ListAssets>
         </section>
         <section className="section-container">
         <h3>Coletados</h3>
