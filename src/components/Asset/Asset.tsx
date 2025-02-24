@@ -4,7 +4,7 @@ import notebook from "../../../public/notebook.png"
 import AssetInterface from "@/utils/interfaces/AssetInterface";
 
 
-const Asset = ({heritage, status, scheduledDate}: AssetInterface) => {
+const Asset = ({heritage, status, scheduledDate, id=""}: AssetInterface) => {
     return(
         <div className={styles.assetContainer}>
             <div className={styles.imgContainer}>  
