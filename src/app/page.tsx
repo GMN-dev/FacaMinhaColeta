@@ -13,7 +13,6 @@ export default function Home() {
   const {isEnable, setIsEnable}: any = useContext(ModalContext);
   const [assets, setAssets] = useState<AssetInterface[]>([]);
 
-
   function enableModal(): void{
     setIsEnable(true);
   }
