@@ -1,9 +1,10 @@
 "use client"
 
+import Alert from "@/components/Alert/Alert";
 import "./globals.css"
 import ListAssets from "@/components/ListAssets/ListAssets";
 import Modal from "@/components/Modal/Modal";
-import { ModalContext } from "@/context/AppContext";
+import { AlertContext, ModalContext } from "@/context/AppContext";
 import getListAssetService from "@/services/assetServices/getListAssetService";
 import AssetInterface from "@/utils/interfaces/AssetInterface";
 import { useContext, useEffect, useState } from "react";
@@ -11,6 +12,7 @@ import { useContext, useEffect, useState } from "react";
 
 export default function Home() {
   const {isEnable, setIsEnable}: any = useContext(ModalContext);
+  const {alert, setAlert}: any = useContext(AlertContext);
   const [assets, setAssets] = useState<AssetInterface[]>([]);
 
   function enableModal(): void{
@@ -28,6 +30,7 @@ export default function Home() {
 
   return (
     <main>
+      <Alert></Alert>
       <Modal></Modal>
       <div className="container-top">
         <h1 className="title-header">Relatório de coleta de equipamentos - Brasília.</h1>

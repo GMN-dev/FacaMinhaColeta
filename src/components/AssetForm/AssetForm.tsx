@@ -1,21 +1,29 @@
 "use client"
 
 import { FormInterface } from "@/utils/interfaces/FormInterface";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import styles from "./AssetForm.module.css";
 import postAsset from "@/services/assetServices/PostAsset";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AlertContext, ModalContext } from "@/context/AppContext";
 
 const AssetForm = () => {
+    const {isEnable, setIsEnable}: any = useContext(ModalContext);
+    const {alert, setAlert}: any = useContext(AlertContext);
     const [loading, setLoading] = useState<boolean>(false);
     const {register, handleSubmit, formState: { errors }} = useForm<FormInterface>()   
 
-    const  onSubmit = async (data: FormInterface, event?: any) => {
+
+    const onSubmit = async (data: FormInterface, event?: any) => {
         event?.preventDefault();
         setLoading(true);
         const response = await postAsset(data);
         setLoading(false);
+        setIsEnable(false)
+        const message = response.status == 200?"Colaborador acionado com sucesso!":response.message;
+        setAlert({active: true, message: message, type: "success"})
       }; 
+
 
     return(
      <form className={styles.form} action="POST" onSubmit={handleSubmit(onSubmit)}>
@@ -42,7 +50,7 @@ const AssetForm = () => {
                 <input className={styles.campo} {...register('email')} type="email" placeholder="usuario@stefanini.com" id={styles.emailInput} />
             </div>
         </div>
-        <button className="bg-blue-600 text-white p-2 rounded-lg hover:brightness-110" type="submit"disabled={loading} >Acionar Colaborador</button>
+        <button className={`text-white p-2 rounded-lg hover:brightness-110 ${!loading?"bg-blue-600":"bg-blue-300"}`} type="submit" disabled={loading}>{!loading?"Acionar colaborador":"Enviando email..."}</button>
      </form>   
     );
 }
