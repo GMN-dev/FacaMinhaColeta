@@ -1,6 +1,6 @@
 export interface FormInterface{
     heritage: string,
-    assetType: AssetType,
+    type: AssetType,
     email: string
     name: string
 }

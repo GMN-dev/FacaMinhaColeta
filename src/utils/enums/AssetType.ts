@@ -1,4 +1,4 @@
 enum AssetType{
-    NOTEBOOK,
-    MONITOR
+    NOTEBOOK = "NOTEBOOK",
+    MONITOR = "MONITOR"
 }

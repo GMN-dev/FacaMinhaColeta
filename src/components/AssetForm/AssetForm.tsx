@@ -15,12 +15,14 @@ const AssetForm = () => {
 
 
     const onSubmit = async (data: FormInterface, event?: any) => {
+        console.log(data)
         event?.preventDefault();
         setLoading(true);
         const response = await postAsset(data);
+        console.log(response)
         setLoading(false);
         setIsEnable(false)
-        const message = response.status == 200?"Colaborador acionado com sucesso!":response.message;
+        const message = response.status == 201?"Colaborador acionado com sucesso!":response.message;
         setAlert({active: true, message: message, type: "success"})
       }; 
 
@@ -34,7 +36,7 @@ const AssetForm = () => {
             </div>
             <div className={styles.top}>
                 <label htmlFor="assetType">Equipamento:</label>
-                <select className={styles.campo} {...register("assetType")} >
+                <select className={styles.campo} {...register("type")} >
                     <option value="NOTEBOOK">Notebook</option>
                     <option value="MONITOR">Monitor</option>
                 </select>
