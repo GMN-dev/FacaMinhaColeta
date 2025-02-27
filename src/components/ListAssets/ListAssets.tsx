@@ -14,7 +14,7 @@ export default function ListAssets({listAssets, status}: ListAssetsInterface){
     return(<>
     <div>
         {
-            assets.length == 0?<NoAsset column={status}/>:assets.map(asset => 
+            assets.length == 0?<NoAsset/>:assets.map(asset => 
             <Asset
             id={asset.id} 
             heritage={asset.heritage} 
