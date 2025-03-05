@@ -1,7 +1,7 @@
 .container{
     position: fixed;
-    top: 5;
-    right: 5;
+    top: 25px;
+    right: 25px;
     padding: 14px 12px;
     border-radius: 10px;
     box-shadow: 0 10px 15px -3px 

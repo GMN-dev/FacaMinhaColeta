@@ -3,7 +3,7 @@
 import { FormInterface } from "@/utils/interfaces/FormInterface";
 import { useForm } from "react-hook-form";
 import styles from "./AssetForm.module.css";
-import postAsset from "@/services/assetServices/PostAsset";
+import postAsset from "@/services/assetServices/postAsset";
 import { useState, useContext } from "react";
 import { AlertContext, ModalContext } from "@/context/AppContext";
 
@@ -15,11 +15,9 @@ const AssetForm = () => {
 
 
     const onSubmit = async (data: FormInterface, event?: any) => {
-        console.log(data)
         event?.preventDefault();
         setLoading(true);
         const response = await postAsset(data);
-        console.log(response)
         setLoading(false);
         setIsEnable(false)
         const message = response.status == 201?"Colaborador acionado com sucesso!":response.message;

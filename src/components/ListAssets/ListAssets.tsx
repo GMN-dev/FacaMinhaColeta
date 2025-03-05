@@ -9,7 +9,7 @@ import NoAsset from "../NoAsset/NoAsset";
 
 export default function ListAssets({listAssets, status}: ListAssetsInterface){
     
-    const assets: AssetInterface[] = listAssets.filter(asset => asset.status === status)
+    const assets = listAssets.filter(asset => asset.status === status)
 
     return(<>
     <div>
