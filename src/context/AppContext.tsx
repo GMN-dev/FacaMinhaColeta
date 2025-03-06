@@ -1,6 +1,8 @@
 "use client"
 
+import getListAssetService from "@/services/assetServices/getListAssetService";
 import AlertInterface from "@/utils/interfaces/AlertInterface";
+import AssetInterface from "@/utils/interfaces/AssetInterface";
 import { createContext, ReactNode, useState } from "react"
 
 type ModalType = {
@@ -13,21 +15,35 @@ type AlertType = {
     setAlert: (alert: AlertInterface) => void 
 }
 
-type ModalPropsType = {
+type AssetState = {
+    assets: AssetInterface[],
+    fetchData: () => void
+}
+
+type PropsType = {
     children: ReactNode;
 }
 
 export const ModalContext = createContext<ModalType | undefined>(undefined);
 export const AlertContext = createContext<AlertType | undefined>(undefined);
+export const AssetsContext = createContext<AssetState | undefined>(undefined)
 
-const ModalContextProvider: React.FC<ModalPropsType> = ({children}) => {
+const ModalContextProvider: React.FC<PropsType> = ({children}) => {
     const [isEnable, setIsEnable] = useState<boolean>(false);
     const [alert, setAlert] = useState<AlertInterface>({active: false, message: "", type:"notify"});
+    const [assets, setAssets] = useState<AssetInterface[]>([]);
+
+    async function fetchData(){
+        const response = await getListAssetService()
+        setAssets(response)
+    }
 
     return(
        <ModalContext.Provider value={{isEnable, setIsEnable}}>
             <AlertContext.Provider value={{alert, setAlert}}>
-                {children}
+                <AssetsContext.Provider value={{assets, fetchData}}>
+                    {children}
+                </AssetsContext.Provider>
             </AlertContext.Provider>
        </ModalContext.Provider> 
     );

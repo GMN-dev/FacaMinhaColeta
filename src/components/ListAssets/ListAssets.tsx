@@ -2,9 +2,6 @@
 
 import ListAssetsInterface from "@/utils/interfaces/ListAssetsInterfae"
 import Asset from "../Asset/Asset"
-import { useEffect, useState } from "react"
-import AssetInterface from "@/utils/interfaces/AssetInterface";
-import { Status } from "@/utils/enums/Status";
 import NoAsset from "../NoAsset/NoAsset";
 
 export default function ListAssets({listAssets, status}: ListAssetsInterface){

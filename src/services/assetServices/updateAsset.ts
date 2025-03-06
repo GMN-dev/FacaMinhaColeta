@@ -1,0 +1,11 @@
+import updateAssetInterface from "@/utils/interfaces/updateAssetInterface";
+import api from "../api"
+
+export default async function updateAsset(id: string, data: updateAssetInterface){
+    try{
+        const response = await api.patch(`equipamentos/update/${id}`, data);
+        return response;
+    }catch(error){
+        return error;
+    }
+}

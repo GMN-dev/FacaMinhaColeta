@@ -5,13 +5,14 @@ import { useForm } from "react-hook-form";
 import styles from "./AssetForm.module.css";
 import postAsset from "@/services/assetServices/postAsset";
 import { useState, useContext } from "react";
-import { AlertContext, ModalContext } from "@/context/AppContext";
+import { AlertContext, AssetsContext, ModalContext } from "@/context/AppContext";
 
 const AssetForm = () => {
     const {isEnable, setIsEnable}: any = useContext(ModalContext);
     const {alert, setAlert}: any = useContext(AlertContext);
     const [loading, setLoading] = useState<boolean>(false);
-    const {register, handleSubmit, formState: { errors }} = useForm<FormInterface>()   
+    const {register, handleSubmit, formState: { errors }} = useForm<FormInterface>() 
+    const {fetchData}: any = useContext(AssetsContext); 
 
 
     const onSubmit = async (data: FormInterface, event?: any) => {
@@ -20,9 +21,11 @@ const AssetForm = () => {
         const response = await postAsset(data);
         setLoading(false);
         setIsEnable(false)
-        const message = response.status == 201?"Colaborador acionado com sucesso!":response.message;
+        const message = response.status == 204?"Colaborador acionado com sucesso!":response.message;
         setAlert({active: true, message: message, type: "success"})
+        await fetchData()
       }; 
+
 
 
     return(

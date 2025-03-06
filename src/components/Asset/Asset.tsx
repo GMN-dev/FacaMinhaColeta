@@ -4,15 +4,16 @@ import notebook from "../../../public/notebook.png"
 import AssetInterface from "@/utils/interfaces/AssetInterface";
 import deleteAsset from "@/services/assetServices/deleteAsset";
 import { useContext } from "react";
-import { AlertContext } from "@/context/AppContext";
-import AlertInterface from "@/utils/interfaces/AlertInterface";
+import { AlertContext, AssetsContext } from "@/context/AppContext";
 
 const Asset = ({heritage, status, scheduledDate, id}: AssetInterface) => {
     const {alert, setAlert}: any = useContext(AlertContext);
-
+    const {fetchData}: any = useContext(AssetsContext); 
+    
     async function deleteBtn(){
-        const response = deleteAsset(id);
+        const response = await deleteAsset(id);
         setAlert({active: true, message: "Item deletado", type: "notify"})
+        await fetchData();
     }
 
     return(
@@ -38,7 +39,7 @@ const Asset = ({heritage, status, scheduledDate, id}: AssetInterface) => {
                         Agendado
                     </button>
 
-                    <button onClick={deleteBtn} className={styles.btn} id={styles.del} type="button">
+                    <button onClick={deleteBtn}  className={styles.btn} id={styles.del} type="button">
                         Deletar
                     </button>
 
