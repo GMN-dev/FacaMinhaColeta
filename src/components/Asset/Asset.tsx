@@ -4,16 +4,22 @@ import notebook from "../../../public/notebook.png"
 import AssetInterface from "@/utils/interfaces/AssetInterface";
 import deleteAsset from "@/services/assetServices/deleteAsset";
 import { useContext } from "react";
-import { AlertContext, AssetsContext } from "@/context/AppContext";
+import { AlertContext, AssetsContext, ModalContext } from "@/context/AppContext";
+import updateAssetService from "@/services/assetServices/updateAssetService";
 
 const Asset = ({heritage, status, scheduledDate, id}: AssetInterface) => {
-    const {alert, setAlert}: any = useContext(AlertContext);
-    const {fetchData}: any = useContext(AssetsContext); 
+    const { setAlert }: any = useContext(AlertContext);
+    const { fetchData }: any = useContext(AssetsContext); 
+    const { setModal }: any = useContext(ModalContext);
     
     async function deleteBtn(){
         const response = await deleteAsset(id);
         setAlert({active: true, message: "Item deletado", type: "notify"})
         await fetchData();
+    }
+
+    function setOnScheduleModalBtn(){
+        setModal({isEnable: true, section:"Schedule"})
     }
 
     return(
@@ -35,7 +41,7 @@ const Asset = ({heritage, status, scheduledDate, id}: AssetInterface) => {
                         Coletar
                     </button>
                     
-                    <button  className={styles.btn} id={styles.scheduled} type="button">
+                    <button onClick={setOnScheduleModalBtn} className={styles.btn} id={styles.scheduled} type="button">
                         Agendado
                     </button>
 

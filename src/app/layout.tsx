@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import "./globals.css";
 import ModalContextProvider from "@/context/AppContext";
-
+import "./globals.css"
 export const metadata: Metadata = {
   title: "Faça Minha Coleta App",
   description: "Coleta de Equipamentos em Brasilia",

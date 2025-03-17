@@ -3,11 +3,12 @@
 import getListAssetService from "@/services/assetServices/getListAssetService";
 import AlertInterface from "@/utils/interfaces/AlertInterface";
 import AssetInterface from "@/utils/interfaces/AssetInterface";
+import ModalInterface from "@/utils/interfaces/ModalInterface";
 import { createContext, ReactNode, useState } from "react"
 
 type ModalType = {
-    isEnable: boolean;
-    setIsEnable: (isEnable: boolean) => void
+    modal: ModalInterface;
+    setModal: (modal: ModalInterface) => void
 }
 
 type AlertType = {
@@ -29,7 +30,7 @@ export const AlertContext = createContext<AlertType | undefined>(undefined);
 export const AssetsContext = createContext<AssetState | undefined>(undefined)
 
 const ModalContextProvider: React.FC<PropsType> = ({children}) => {
-    const [isEnable, setIsEnable] = useState<boolean>(false);
+    const [modal, setModal] = useState<ModalInterface>({isEnable: false ,section: "Form"});
     const [alert, setAlert] = useState<AlertInterface>({active: false, message: "", type:"notify"});
     const [assets, setAssets] = useState<AssetInterface[]>([]);
 
@@ -39,7 +40,7 @@ const ModalContextProvider: React.FC<PropsType> = ({children}) => {
     }
 
     return(
-       <ModalContext.Provider value={{isEnable, setIsEnable}}>
+       <ModalContext.Provider value={{modal, setModal}}>
             <AlertContext.Provider value={{alert, setAlert}}>
                 <AssetsContext.Provider value={{assets, fetchData}}>
                     {children}
