@@ -25,6 +25,5 @@
     border-radius: 8px; 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     cursor: default; 
-    width: 500px;
     z-index: 10000; 
 }

@@ -16,7 +16,10 @@ export default function ListAssets({listAssets, status}: ListAssetsInterface){
             id={asset.id} 
             heritage={asset.heritage} 
             scheduledDate={asset.scheduledDate} 
-            status={asset.status} 
+            status={asset.status}
+            pendingDays={asset.pendingDays} 
+            pickupDate={asset.pickupDate}
+            assetType={asset.assetType}
             key={asset.id} />)
         }
     </div>

@@ -1,6 +1,6 @@
 export enum Status {
-    PENDENTE,
-    COLETADO,
-    AGENDADO
+    PENDENTE = "PENDENTE",
+    COLETADO = "COLETADO",
+    AGENDADO = "AGENDADO"
 }
 

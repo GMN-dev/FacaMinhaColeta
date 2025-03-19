@@ -8,7 +8,7 @@ import { AssetsContext, ModalContext } from "@/context/AppContext";
 import { useContext, useEffect, useState } from "react";
 
 export default function Home() {
-  const {isEnable, setModal}: any = useContext(ModalContext);
+  const {setModal}: any = useContext(ModalContext);
   const {assets, fetchData}: any = useContext(AssetsContext); 
 
   useEffect(()=>{

@@ -1,7 +1,7 @@
-import { FormInterface } from "@/utils/interfaces/FormInterface";
+import { AddAssetFormInterface } from "@/utils/interfaces/AddAssetFormInterface";
 import api from "../api";
 
-export default async function postAsset(form: FormInterface){
+export default async function postAsset(form: AddAssetFormInterface){
     try{
         const response = await api.post("equipamentos/add", form)
         return response;      

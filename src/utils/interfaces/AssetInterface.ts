@@ -5,5 +5,8 @@ export default interface AssetInterface{
     heritage: string,
     status: Status,
     scheduledDate: string,
+    pendingDays: string,
+    assetType: string,
+    pickupDate: string
 }
 

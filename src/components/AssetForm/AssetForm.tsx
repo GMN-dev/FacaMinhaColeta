@@ -1,6 +1,6 @@
 "use client"
 
-import { FormInterface } from "@/utils/interfaces/FormInterface";
+import { AddAssetFormInterface } from "@/utils/interfaces/AddAssetFormInterface";
 import { useForm } from "react-hook-form";
 import styles from "./AssetForm.module.css";
 import postAsset from "@/services/assetServices/postAsset";
@@ -11,11 +11,11 @@ const  AssetForm = () => {
     const {setModal}: any = useContext(ModalContext);
     const {setAlert}: any = useContext(AlertContext);
     const [loading, setLoading] = useState<boolean>(false);
-    const {register, handleSubmit, formState: { errors }} = useForm<FormInterface>() 
+    const {register, handleSubmit, formState: { errors }} = useForm<AddAssetFormInterface>() 
     const {fetchData}: any = useContext(AssetsContext); 
 
 
-    const onSubmit = async (data: FormInterface, event?: any) => {
+    const onSubmit = async (data: AddAssetFormInterface, event?: any) => {
         event?.preventDefault();
         setLoading(true);
         const response = await postAsset(data);
