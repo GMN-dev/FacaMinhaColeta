@@ -18,7 +18,7 @@ export default function Schedule(status: Status){
     const onSubmit = async (data: UpdateAssetInterface, event?: any) => {
             event?.preventDefault();
             setLoading(true);
-            // const response = await updateAssetService();
+            const response = await updateAssetService();
             setLoading(false);
             setModal({isEnable: false, section: ""})
             // const message = response.status == 204?`${data.name} acionado(a) com sucesso!`:response.message;
